@@ -23,6 +23,8 @@ namespace ContosoUniversity.DAL
                     .MapRightKey("InstructorID")
                     .ToTable("CourseInstructor"));
             modelBuilder.Entity<Department>().MapToStoredProcedures();
+            modelBuilder.Entity<Department>()
+                .Property(p => p.RowVersion).IsConcurrencyToken();
         }
     }
 }
